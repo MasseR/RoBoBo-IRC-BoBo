@@ -1,14 +1,12 @@
 #include "robobo.h"
 #include "configuration.cpp"
 #include "socket.h"
+#include "lineParser.cpp"
+#include "servercapab.cpp"
 
 std::string input, command, currentNick;
 std::vector<std::string> inputParams;
 bool registered;
-
-void handleCapab(std::vector<std::string> parsedLine) {
-	// handle 005 when I get that far
-}
 
 int main(int argc, char** argv) {
 	ConfigReader config;
@@ -25,7 +23,7 @@ int main(int argc, char** argv) {
 		input = bot_socket.receive();
 		std::cout << input << std::endl;
 		inputParams.clear();
-		inputParams = bot_socket.parseLine(input);
+		inputParams = parseLine(input);
 		command = inputParams[1];
 		std::cout << "Command/Numeric: " << command << std::endl;
 		if (command == "001")

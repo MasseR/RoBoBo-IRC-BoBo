@@ -1,4 +1,5 @@
 #include "socket.h"
+#include "robobo.h"
 
 
 Socket::Socket(std::string server, unsigned short port) {
@@ -65,22 +66,4 @@ std::string Socket::receive() {
 		if (inputBuffer[0] == '\r')
 			seenCR = true;
 	}
-}
-
-std::vector<std::string> Socket::parseLine(std::string message) {
-	messageParams.clear();
-	messageString = "";
-	for (unsigned int i = 0; i < message.size(); i++) {
-		if (message[i] == ' ') {
-			messageParams.push_back(messageString);
-			messageString = "";
-		} else if (message[i] == ':' && messageString == "" && i > 0) {
-			for (i++; i < message.size(); i++)
-				messageString += message[i];
-			messageParams.push_back(messageString);
-			messageString = "";
-		} else
-			messageString += message[i];
-	}
-	return messageParams;
 }
