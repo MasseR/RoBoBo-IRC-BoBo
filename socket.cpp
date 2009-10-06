@@ -1,23 +1,5 @@
 #include "socket.h"
-#include "robobo.h"
 
-class Socket {
-	public:
-		Socket(std::string server, unsigned short port);
-		~Socket();
-		void sendMsg(std::string message);
-		std::string receive();
-		std::vector<std::string> parseLine(std::string message);
-		void closeConnection();
-		bool isConnected();
-	private:
-		int socketfd, status;
-		sockaddr_in socketAddr;
-		char inputBuffer[2];
-		std::string messageString;
-		std::vector<std::string> messageParams;
-		bool connected, seenCR;
-};
 
 Socket::Socket(std::string server, unsigned short port) {
 	socketfd = socket(AF_INET, SOCK_STREAM, 0);

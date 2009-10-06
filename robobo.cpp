@@ -1,6 +1,6 @@
 #include "robobo.h"
 #include "configuration.cpp"
-#include "socket.cpp"
+#include "socket.h"
 
 std::string input, command, currentNick;
 std::vector<std::string> inputParams;
