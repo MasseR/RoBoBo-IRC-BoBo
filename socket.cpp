@@ -1,5 +1,6 @@
 #include "socket.h"
 #include "robobo.h"
+#include <cstdio>
 
 #ifndef SOCKET_ROBOBO
 #define SOCKET_ROBOBO
